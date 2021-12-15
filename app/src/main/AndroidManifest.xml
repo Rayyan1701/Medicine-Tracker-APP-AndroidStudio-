@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
-        <activity android:name=".searchMedicalshopActivity"></activity>
+        <activity android:name=".UserInfoActivity"></activity>
+        <activity android:name=".searchMedicalshopActivity" />
         <activity android:name=".checkProgressActivity" />
         <activity android:name=".addMedicineActivity" />
         <activity android:name=".MainActivity">
