@@ -8,19 +8,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class checkProgressActivity extends AppCompatActivity {
 
-    Button c1,c2,c3;
+    View c1,c2,c3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_progress);
 
-        c1=(Button)findViewById(R.id.add_med_btn);
-        c2=(Button)findViewById(R.id.med_map_btn);
-        c3=(Button)findViewById(R.id.user_info_btn);
-
+        c1=(View)findViewById(R.id.add_med_btn);
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -29,7 +28,17 @@ public class checkProgressActivity extends AppCompatActivity {
             }
         });
 
+        c2=(View)findViewById(R.id.today_button);
         c2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Class<UserInfoActivity> temp = UserInfoActivity.class;
+                myfunc(temp);
+            }
+        });
+
+        c3=(View)findViewById(R.id.med_map_btn);
+        c3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Class <searchMedicalshopActivity> temp = searchMedicalshopActivity.class;
@@ -37,13 +46,9 @@ public class checkProgressActivity extends AppCompatActivity {
             }
         });
 
-        c3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Class <UserInfoActivity> temp = UserInfoActivity.class;
-                myfunc(temp);
-            }
-        });
+        BottomNavigationView bottomNavigation=(BottomNavigationView)findViewById(R.id.bottom_navigation);
+        View v=bottomNavigation.findViewById(R.id.check_prog_btn);
+        v.performClick();
     }
 
     public void myfunc(Class temp){

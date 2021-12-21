@@ -6,68 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".checkProgressActivity">
 
-    <Button
-        android:id="@+id/add_med_btn"
-        android:layout_width="101dp"
-        android:layout_height="70dp"
-        android:background="@drawable/optionbuttonstyle"
-        android:text="Add Medicine"
-        android:textColor="@color/black"
-        app:backgroundTint="@color/navigate_button"
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+        android:layout_width="406dp"
+        android:layout_height="80dp"
+        android:background="#0A6E3F"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
-
-
-    <Button
-        android:id="@+id/check_prog_btn"
-        android:layout_width="101dp"
-        android:layout_height="70dp"
-        android:background="@drawable/optionbuttonstyle"
-        android:text="Check Progress"
-        android:textColor="@color/black"
-        app:backgroundTint="@color/navigate_button"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.348"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
-
-    <Button
-        android:id="@+id/med_map_btn"
-        android:layout_width="101dp"
-        android:layout_height="70dp"
-        android:background="@drawable/optionbuttonstyle"
-
-        android:text="Medicine Map"
-        android:textColor="@color/black"
-        app:backgroundTint="@color/navigate_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.674"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
-
-    <Button
-        android:id="@+id/user_info_btn"
-        android:layout_width="101dp"
-        android:layout_height="70dp"
-        android:background="@drawable/optionbuttonstyle"
-        android:text="User Info"
-        android:textColor="@color/black"
-        app:backgroundTint="@color/navigate_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_navigation_menu" />
 
     <TextView
         android:id="@+id/textView3"
