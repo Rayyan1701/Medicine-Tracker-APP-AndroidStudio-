@@ -1,13 +1,12 @@
 package com.example.android.project;
 
+
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,11 +17,8 @@ import com.example.android.project.views.RobotoBoldTextView;
 
 import java.util.ArrayList;
 
-import javax.xml.namespace.QName;
-
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder>
+public class CustomAdapterToday extends RecyclerView.Adapter<CustomAdapterToday.MyViewHolder>
 {
-
     private Context context;
     private Activity activity;
     private static ArrayList<String> Name;
@@ -40,7 +36,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public static MtDatabaseHelper mydb;
     private static Activity activityy;
 
-    CustomAdapter(Context context,
+    CustomAdapterToday(Context context,
                   ArrayList Name,
                   ArrayList day_sun,
                   ArrayList day_mon,
@@ -54,7 +50,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                   ArrayList medicationType,
                   MtDatabaseHelper myDb,
                   Activity i
-                  )
+    )
     {
         this.context=context;
         this.Name=Name;
@@ -74,16 +70,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     }
 
+
+
     @NonNull
     @Override
-    public CustomAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.my_row, parent, false);
-        return new MyViewHolder(view,context);
+        View view = inflater.inflate(R.layout.my_today_row, parent, false);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         holder.name.setText(String.valueOf(Name.get(position)));
 
@@ -163,14 +161,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.time.setText(String.valueOf(time.get(position)));
         holder.quantity_type.setText(String.valueOf(medicationType.get(position)));
 
-       // holder.quantity_type.setText(String.valueOf(quantity.get(position))+" "+String.valueOf(medicationType.get(position)));
-
     }
 
     @Override
     public int getItemCount() {
-        return Name.size();
+
+            return Name.size();
     }
+
 
     public static class MyViewHolder extends RecyclerView.ViewHolder
     {
@@ -182,25 +180,25 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
 
 
-        public MyViewHolder(@NonNull View itemView,Context context) {
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.tv_medicine_name);
-            time=itemView.findViewById(R.id.tv_med_time);
-            quantity_type=itemView.findViewById(R.id.tv_dose_details);
-            sun=itemView.findViewById(R.id.tv_sunday);
-            mon=itemView.findViewById(R.id.tv_monday);
-            tue=itemView.findViewById(R.id.tv_tuesday);
-            wed=itemView.findViewById(R.id.tv_wednesday);
-            thu=itemView.findViewById(R.id.tv_thursday);
-            fri=itemView.findViewById(R.id.tv_friday);
-            sat=itemView.findViewById(R.id.tv_saturday);
-            remove_row=itemView.findViewById(R.id.iv_ignore_med);
+            name=itemView.findViewById(R.id.tv_medicine_name_today);
+            time=itemView.findViewById(R.id.tv_med_time_today);
+            quantity_type=itemView.findViewById(R.id.tv_dose_details_today);
+            sun=itemView.findViewById(R.id.tv_sunday_today);
+            mon=itemView.findViewById(R.id.tv_monday_today);
+            tue=itemView.findViewById(R.id.tv_tuesday_today);
+            wed=itemView.findViewById(R.id.tv_wednesday_today);
+            thu=itemView.findViewById(R.id.tv_thursday_today);
+            fri=itemView.findViewById(R.id.tv_friday_today);
+            sat=itemView.findViewById(R.id.tv_saturday_today);
+            remove_row=itemView.findViewById(R.id.iv_ignore_med_today);
+            done_row=itemView.findViewById(R.id.iv_take_med_today);
 
-
-           // if (addMedicineActivity.getcontext() == context)
-           // {
-          //      done_row.setVisibility(View.GONE);
-           // }
+            // if (addMedicineActivity.getcontext() == context)
+            // {
+            //      done_row.setVisibility(View.GONE);
+            // }
 
 
 
@@ -211,20 +209,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                     activityy.recreate();
                     //Toast.makeText( view.getContext(), "position = " + getLayoutPosition() +"removed", Toast.LENGTH_SHORT).show();
 
-
-
-
-
-
-
-
-
-
-
-
                     //name.setVisibility(View.INVISIBLE);
                 }
             });
         }
     }
+
+
 }

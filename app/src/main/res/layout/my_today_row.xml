@@ -24,7 +24,7 @@
             android:paddingTop="@dimen/sixteen_dp">
 
             <com.example.android.project.views.RobotoBoldTextView
-                android:id="@+id/tv_med_time"
+                android:id="@+id/tv_med_time_today"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -49,7 +49,7 @@
             android:paddingTop="@dimen/eight_dp">
 
             <ImageView
-                android:id="@+id/iv_icon"
+                android:id="@+id/iv_icon_today"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
@@ -62,22 +62,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/iv_icon"
-                android:layout_toLeftOf="@+id/linearLayout"
-                android:layout_toRightOf="@+id/iv_icon"
-                android:layout_toStartOf="@+id/linearLayout"
+                android:layout_toEndOf="@+id/iv_icon_today"
+                android:layout_toLeftOf="@+id/linearLayout_today"
+                android:layout_toRightOf="@+id/iv_icon_today"
+                android:layout_toStartOf="@+id/linearLayout_today"
                 android:orientation="vertical"
                 android:padding="4dp">
 
                 <com.example.android.project.views.RobotoBoldTextView
-                    android:id="@+id/tv_medicine_name"
+                    android:id="@+id/tv_medicine_name_today"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#FDFAFA"
                     tools:text="Paracetamol" />
 
                 <com.example.android.project.views.RobotoBoldTextView
-                    android:id="@+id/tv_dose_details"
+                    android:id="@+id/tv_dose_details_today"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
@@ -85,7 +85,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@+id/linearLayout_today"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -94,21 +94,29 @@
 
 
                 <ImageView
-                    android:id="@+id/iv_ignore_med"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:id="@+id/iv_ignore_med_today"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:contentDescription="@null"
                     android:src="@drawable/background_configure_alarm_button"
                     android:visibility="visible" />
 
-
+                <ImageView
+                    android:id="@+id/iv_take_med_today"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/background_take_alarm_button"
+                    android:contentDescription="@null"
+                    android:visibility="visible" />
 
             </LinearLayout>
         </RelativeLayout>
 
 
         <LinearLayout
-            android:id="@+id/checkbox_layout"
+            android:id="@+id/checkbox_layout_today"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -116,7 +124,7 @@
             android:weightSum="7">
 
             <com.example.android.project.views.DayViewCheckBox
-                android:id="@+id/tv_sunday"
+                android:id="@+id/tv_sunday_today"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
@@ -127,7 +135,7 @@
                 android:text="S" />
 
             <com.example.android.project.views.DayViewCheckBox
-                android:id="@+id/tv_monday"
+                android:id="@+id/tv_monday_today"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
@@ -139,7 +147,7 @@
 
 
             <com.example.android.project.views.DayViewCheckBox
-                android:id="@+id/tv_tuesday"
+                android:id="@+id/tv_tuesday_today"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
@@ -150,7 +158,7 @@
                 android:text="T" />
 
             <com.example.android.project.views.DayViewCheckBox
-                android:id="@+id/tv_wednesday"
+                android:id="@+id/tv_wednesday_today"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
@@ -161,7 +169,7 @@
                 android:text="W" />
 
             <com.example.android.project.views.DayViewCheckBox
-                android:id="@+id/tv_thursday"
+                android:id="@+id/tv_thursday_today"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
@@ -172,7 +180,7 @@
                 android:text="T" />
 
             <com.example.android.project.views.DayViewCheckBox
-                android:id="@+id/tv_friday"
+                android:id="@+id/tv_friday_today"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"
@@ -184,7 +192,7 @@
 
 
             <com.example.android.project.views.DayViewCheckBox
-                android:id="@+id/tv_saturday"
+                android:id="@+id/tv_saturday_today"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="4dp"

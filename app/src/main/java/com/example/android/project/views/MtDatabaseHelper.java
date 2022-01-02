@@ -85,8 +85,9 @@ public class MtDatabaseHelper extends SQLiteOpenHelper
 
 
         long result = db.insert(TABLE_NAME,null, cv);
+
         if(result == -1){
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, name+" "+ sun+" "+mon+" "+tue+" "+wed+" "+thu+" "+fri+" "+sat+" "+time+" "+quantity+" "+ type, Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(context, "Added Successfully!", Toast.LENGTH_SHORT).show();
         }
@@ -105,12 +106,16 @@ public class MtDatabaseHelper extends SQLiteOpenHelper
 
 
     public Cursor readTodaysAllData(){
-        String query = "SELECT * FROM " + TABLE_NAME+" WHERE DATEPART(dw,GETDATE())='yes'";
+        String query = "SELECT * FROM "+ TABLE_NAME +" WHERE CASE strftime('%w', DATE('now')) WHEN '0' THEN sunday  WHEN '1' THEN monday WHEN '2' THEN tuesday WHEN '3' THEN wednesday WHEN '4' THEN thursday WHEN '5' THEN friday WHEN '6' THEN satday END   ='yes'";
+
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
+
         if(db != null){
             cursor = db.rawQuery(query, null);
+
+
         }
         return cursor;
     }

@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.project.views.MtDatabaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,8 +21,10 @@ public class UserInfoActivity extends AppCompatActivity {
 
     View c1,c2,c3;
 
-    CustomAdapter customAdapter;
+    CustomAdapterToday customAdapter;
     RecyclerView recyclerView;
+
+    Button btest;
 
     MtDatabaseHelper mydb;
     ArrayList<String> Name, day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType;
@@ -28,6 +33,14 @@ public class UserInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
+
+
+
+
+
+
+
+
 
         c1=(View)findViewById(R.id.add_med_btn);
         c1.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +75,7 @@ public class UserInfoActivity extends AppCompatActivity {
 
 
 
-        mydb= new MtDatabaseHelper(UserInfoActivity.this);
+        mydb= new MtDatabaseHelper(this);
         Name=new ArrayList<>();
         day_sun =new ArrayList<>();
         day_mon=new ArrayList<>();
@@ -77,12 +90,13 @@ public class UserInfoActivity extends AppCompatActivity {
 
         storeTodaysDataInArrays();
 
-        recyclerView=(RecyclerView)findViewById(R.id.recyclerView);
+        recyclerView=(RecyclerView)findViewById(R.id.recyclerView_today);
 
-        customAdapter = new CustomAdapter(UserInfoActivity.this,Name,day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType,mydb,this);
+        customAdapter = new CustomAdapterToday(UserInfoActivity.this,Name,day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType,mydb,this);
         recyclerView.setAdapter(customAdapter);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(UserInfoActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
+
 
 
 
@@ -97,10 +111,10 @@ public class UserInfoActivity extends AppCompatActivity {
 
     void storeTodaysDataInArrays(){
         Cursor cursor = mydb.readTodaysAllData();
-        // TextView e=(TextView)findViewById(R.id.nodatatextview);
+         TextView e=(TextView)findViewById(R.id.textView4);
         if(cursor.getCount() == 0){
 
-            // e.setVisibility(View.VISIBLE);
+             e.setVisibility(View.VISIBLE);
 
         }else{
             while (cursor.moveToNext())
@@ -118,8 +132,10 @@ public class UserInfoActivity extends AppCompatActivity {
                 medicationType.add(cursor.getString(11));
 
 
+
+
             }
-            //  e.setVisibility(View.GONE);
+              e.setVisibility(View.GONE);
 
         }
     }

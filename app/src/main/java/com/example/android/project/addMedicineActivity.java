@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -36,6 +37,15 @@ public class addMedicineActivity extends AppCompatActivity {
    MtDatabaseHelper mydb;
    ArrayList<String>Name, day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType;
     ArrayList<Integer>id;
+
+    public Context getcontext()
+    {
+        //addMedicineActivity addMedicineActivity1 = addMedicineActivity.this;
+        return addMedicineActivity.this;
+    }
+
+
+
 
 
     @Override
@@ -91,7 +101,7 @@ public class addMedicineActivity extends AppCompatActivity {
             }
         });
 
-        mydb= new MtDatabaseHelper(addMedicineActivity.this);
+        mydb= new MtDatabaseHelper(this);
         Name=new ArrayList<>();
         day_sun =new ArrayList<>();
         day_mon=new ArrayList<>();
