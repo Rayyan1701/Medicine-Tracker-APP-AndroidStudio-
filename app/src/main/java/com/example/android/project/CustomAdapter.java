@@ -2,14 +2,18 @@ package com.example.android.project;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.project.views.DayViewCheckBox;
+import com.example.android.project.views.MtDatabaseHelper;
 import com.example.android.project.views.RobotoBoldTextView;
 
 import java.util.ArrayList;
@@ -21,7 +25,20 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     private Context context;
     private Activity activity;
-    private ArrayList<String> Name, day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType;
+    private static ArrayList<String> Name;
+    private ArrayList<String> day_sun;
+    private ArrayList<String> day_mon;
+    private ArrayList<String> day_tue;
+    private ArrayList<String> day_wed;
+    private ArrayList<String> day_thu;
+    private ArrayList<String> day_fri;
+    private ArrayList<String> day_sat;
+    private ArrayList<String> time;
+    private ArrayList<String> quantity;
+    private ArrayList<String> medicationType;
+    private ImageView remove_data;
+    public static MtDatabaseHelper mydb;
+    private static Activity activityy;
 
     CustomAdapter(Context context,
                   ArrayList Name,
@@ -34,7 +51,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                   ArrayList day_sat,
                   ArrayList time,
                   ArrayList quantity,
-                  ArrayList medicationType
+                  ArrayList medicationType,
+                  MtDatabaseHelper myDb,
+                  Activity i
                   )
     {
         this.context=context;
@@ -49,6 +68,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         this.time=time;
         this.quantity=quantity;
         this.medicationType=medicationType;
+        this.mydb=myDb;
+        this.activityy=i;
 
 
     }
@@ -155,6 +176,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     {
         RobotoBoldTextView name,time,quantity_type;
         DayViewCheckBox sun,mon,tue,wed,thu,fri,sat;
+        ImageView remove_row;
 
 
 
@@ -170,6 +192,42 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             thu=itemView.findViewById(R.id.tv_thursday);
             fri=itemView.findViewById(R.id.tv_friday);
             sat=itemView.findViewById(R.id.tv_saturday);
+            remove_row=itemView.findViewById(R.id.iv_ignore_med);
+
+            remove_row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mydb.remove_row(Name.get(getLayoutPosition()));
+                    activityy.recreate();
+                    //Toast.makeText( view.getContext(), "position = " + getLayoutPosition() +"removed", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+
+
+
+
+
+
+                    //name.setVisibility(View.INVISIBLE);
+                }
+            });
+
+
+
+
+
+
         }
+
+
+
+
+
+
+
     }
 }

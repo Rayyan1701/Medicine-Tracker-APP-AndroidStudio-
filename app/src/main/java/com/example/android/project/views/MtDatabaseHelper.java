@@ -1,9 +1,11 @@
 package com.example.android.project.views;
+import android.animation.TimeAnimator;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -102,4 +104,39 @@ public class MtDatabaseHelper extends SQLiteOpenHelper
     }
 
 
+    public Cursor readTodaysAllData(){
+        String query = "SELECT * FROM " + TABLE_NAME+" WHERE DATEPART(dw,GETDATE())='yes'";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+
+
+
+    public void remove_row(String name)
+    {
+       // String query = "DELETE FROM " + TABLE_NAME+" WHERE "+ COLUMN_ID +"="+ layoutPosition ;
+        SQLiteDatabase db = this.getWritableDatabase();
+
+       // Cursor cursor = null;
+       // if(db != null){
+       //     cursor = db.rawQuery(query, null);
+       // }
+
+        long res=db.delete(TABLE_NAME,"medicine_name=?",new String[]{name});
+        if(res == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Deleted Successfully!", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+    }
 }

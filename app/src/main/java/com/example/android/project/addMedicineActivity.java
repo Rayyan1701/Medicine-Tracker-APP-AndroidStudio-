@@ -8,10 +8,13 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.project.views.MtDatabaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -24,6 +27,7 @@ public class addMedicineActivity extends AppCompatActivity {
    View c1,c2,c3;
    View curr;
    FloatingActionButton a;
+   ImageView remove_button;
 
     CustomAdapter customAdapter;
     RecyclerView recyclerView;
@@ -31,7 +35,7 @@ public class addMedicineActivity extends AppCompatActivity {
 
    MtDatabaseHelper mydb;
    ArrayList<String>Name, day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType;
-
+    ArrayList<Integer>id;
 
 
     @Override
@@ -104,30 +108,10 @@ public class addMedicineActivity extends AppCompatActivity {
 
         recyclerView=(RecyclerView)findViewById(R.id.recyclerView);
 
-            customAdapter = new CustomAdapter(addMedicineActivity.this,Name,day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType);
+            customAdapter = new CustomAdapter(addMedicineActivity.this,Name,day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType,mydb,this);
             recyclerView.setAdapter(customAdapter);
             final LinearLayoutManager layoutManager = new LinearLayoutManager(addMedicineActivity.this, LinearLayoutManager.VERTICAL, false);
             recyclerView.setLayoutManager(layoutManager);
-
-
-
-
-        /*
-       try {
-            final LinearLayoutManager layoutManager = new LinearLayoutManager(addMedicineActivity.this, LinearLayoutManager.VERTICAL, false);
-            recyclerView.setLayoutManager(layoutManager);
-
-
-
-        }
-        catch(Exception e1)
-        {
-            TextView e=(TextView)findViewById(R.id.nodatatextview);
-            e.setVisibility(View.VISIBLE);
-            e.setText(R.string.error);
-            //empty_imageview.setTextColor(Color.parseColor("black"));
-        }
-        */
 
 
 
@@ -137,14 +121,15 @@ public class addMedicineActivity extends AppCompatActivity {
 
     void storeDataInArrays(){
         Cursor cursor = mydb.readAllData();
-       // TextView e=(TextView)findViewById(R.id.nodatatextview);
+        TextView e=(TextView)findViewById(R.id.nodatatextview);
         if(cursor.getCount() == 0){
 
-           // e.setVisibility(View.VISIBLE);
+            e.setVisibility(View.VISIBLE);
 
         }else{
             while (cursor.moveToNext())
             {
+               // id.add(cursor.getInt(0));
                 Name.add(cursor.getString(1));
                 day_sun.add(cursor.getString(2));
                 day_mon.add(cursor.getString(3));
@@ -159,7 +144,7 @@ public class addMedicineActivity extends AppCompatActivity {
 
 
             }
-          //  e.setVisibility(View.GONE);
+            e.setVisibility(View.GONE);
 
         }
     }

@@ -1,6 +1,7 @@
 package com.example.android.project;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.view.View;
@@ -219,10 +220,36 @@ public class AddMedicineDetailsForm extends AppCompatActivity  {
                 medicationType=temp.getSelectedItem().toString();
 
 
+                if(Name == "")
+                {
+                    Toast.makeText(AddMedicineDetailsForm.this,"Enter name!",Toast.LENGTH_LONG).show();
+                }
+                else if(quantity == "")
+                {
+                    Toast.makeText(AddMedicineDetailsForm.this,"Enter Quantity!",Toast.LENGTH_LONG).show();
+                }
+                else if(!t1.isChecked() && !t2.isChecked() && !t3.isChecked() && !t4.isChecked() && !t5.isChecked() && !t6.isChecked() && !t7.isChecked())
+                {
+                    Toast.makeText(AddMedicineDetailsForm.this,"No Day selected!",Toast.LENGTH_LONG).show();
+                }
+                else if(time == null)
+                {
+                    Toast.makeText(AddMedicineDetailsForm.this,"Select Time!",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    MtDatabaseHelper myDB = new MtDatabaseHelper(AddMedicineDetailsForm.this);
+                    myDB.addMEDinDatabase(Name, day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType);
 
 
-                MtDatabaseHelper myDB = new MtDatabaseHelper(AddMedicineDetailsForm.this);
-                myDB.addMEDinDatabase(Name, day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType);
+                    Intent intent = new Intent(AddMedicineDetailsForm.this, addMedicineActivity.class);
+                    startActivity(intent);
+                }
+
+
+
+
+
 
 
             }
@@ -242,7 +269,19 @@ public class AddMedicineDetailsForm extends AppCompatActivity  {
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                 hour = selectedHour;
                 minute = selectedMinute;
-                medicinetime.setText(String.format(Locale.getDefault(), "%d:%d", selectedHour, selectedMinute));
+                String h,m;
+                h= String.valueOf(hour);
+                if(hour%10==hour)
+                {
+                    h="0"+h;
+                }
+                m= String.valueOf(minute);
+                if(minute%10==minute)
+                {
+                    m="0"+m;
+                }
+
+                medicinetime.setText(String.format(Locale.getDefault(), "%s:%s", h, m));
 
                 time=medicinetime.getText().toString();
 
