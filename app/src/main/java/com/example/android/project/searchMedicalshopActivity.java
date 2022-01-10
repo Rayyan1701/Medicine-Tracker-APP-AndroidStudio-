@@ -3,10 +3,8 @@ package com.example.android.project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -23,7 +21,7 @@ public class searchMedicalshopActivity extends AppCompatActivity {
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Class <UserInfoActivity> temp = UserInfoActivity.class;
+                Class <TodayInfoActivity> temp = TodayInfoActivity.class;
                 myfunc(temp);
             }
         });
@@ -32,7 +30,7 @@ public class searchMedicalshopActivity extends AppCompatActivity {
         c2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Class<checkProgressActivity> temp = checkProgressActivity.class;
+                Class<checkScheduleActivity> temp = checkScheduleActivity.class;
                 myfunc(temp);
             }
         });

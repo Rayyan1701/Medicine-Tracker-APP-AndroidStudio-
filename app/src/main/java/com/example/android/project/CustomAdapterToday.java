@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,19 +20,19 @@ import java.util.ArrayList;
 
 public class CustomAdapterToday extends RecyclerView.Adapter<CustomAdapterToday.MyViewHolder>
 {
-    private Context context;
+    private static Context context;
     private Activity activity;
     private static ArrayList<String> Name;
-    private ArrayList<String> day_sun;
-    private ArrayList<String> day_mon;
-    private ArrayList<String> day_tue;
-    private ArrayList<String> day_wed;
-    private ArrayList<String> day_thu;
-    private ArrayList<String> day_fri;
-    private ArrayList<String> day_sat;
-    private ArrayList<String> time;
-    private ArrayList<String> quantity;
-    private ArrayList<String> medicationType;
+    private static  ArrayList<String> day_sun;
+    private static  ArrayList<String> day_mon;
+    private static  ArrayList<String> day_tue;
+    private  static ArrayList<String> day_wed;
+    private static  ArrayList<String> day_thu;
+    private  static ArrayList<String> day_fri;
+    private  static ArrayList<String> day_sat;
+    private  static ArrayList<String> time;
+    private  static ArrayList<String> quantity;
+    private  static ArrayList<String> medicationType;
     private ImageView remove_data;
     public static MtDatabaseHelper mydb;
     private static Activity activityy;
@@ -170,7 +171,7 @@ public class CustomAdapterToday extends RecyclerView.Adapter<CustomAdapterToday.
     }
 
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder
+    public class MyViewHolder extends RecyclerView.ViewHolder
     {
 
 
@@ -205,11 +206,58 @@ public class CustomAdapterToday extends RecyclerView.Adapter<CustomAdapterToday.
             remove_row.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mydb.remove_row(Name.get(getLayoutPosition()));
-                    activityy.recreate();
+                    //mydb.remove_row(Name.get(getLayoutPosition()));
+                    //activityy.recreate();
                     //Toast.makeText( view.getContext(), "position = " + getLayoutPosition() +"removed", Toast.LENGTH_SHORT).show();
 
                     //name.setVisibility(View.INVISIBLE);
+
+                   // mDataset.remove(position);
+                    //notifyItemRemoved(position);
+                   // notifyItemRangeChanged(position, mDataSet.size());
+
+
+                    Name.remove(getLayoutPosition());
+                    day_sun.remove(getLayoutPosition());
+                    day_mon.remove(getLayoutPosition());
+                    day_tue.remove(getLayoutPosition());
+                    day_wed.remove(getLayoutPosition());
+                    day_thu.remove(getLayoutPosition());
+                    day_fri.remove(getLayoutPosition());
+                    day_sat.remove(getLayoutPosition());
+                    CustomAdapterToday.time.remove(getLayoutPosition());
+                    quantity.remove(getLayoutPosition());
+                    medicationType.remove(getLayoutPosition());
+
+                    Toast.makeText(context,"Medicine Skipped",Toast.LENGTH_LONG).show();
+
+                    notifyDataSetChanged();
+
+                }
+            });
+            done_row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //mydb.remove_row(Name.get(getLayoutPosition()));
+                    //activityy.recreate();
+                    //Toast.makeText( view.getContext(), "position = " + getLayoutPosition() +"removed", Toast.LENGTH_SHORT).show();
+
+                    //name.setVisibility(View.INVISIBLE);
+
+                    Name.remove(getLayoutPosition());
+                    day_sun.remove(getLayoutPosition());
+                    day_mon.remove(getLayoutPosition());
+                    day_tue.remove(getLayoutPosition());
+                    day_wed.remove(getLayoutPosition());
+                    day_thu.remove(getLayoutPosition());
+                    day_fri.remove(getLayoutPosition());
+                    day_sat.remove(getLayoutPosition());
+                    CustomAdapterToday.time.remove(getLayoutPosition());
+                    quantity.remove(getLayoutPosition());
+                    medicationType.remove(getLayoutPosition());
+
+                    Toast.makeText(context,"Medicine Taken",Toast.LENGTH_LONG).show();
+                    notifyDataSetChanged();
                 }
             });
         }

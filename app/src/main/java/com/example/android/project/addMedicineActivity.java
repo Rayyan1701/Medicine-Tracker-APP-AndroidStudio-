@@ -4,18 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.project.views.MtDatabaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -61,7 +56,7 @@ public class addMedicineActivity extends AppCompatActivity {
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Class <UserInfoActivity> temp = UserInfoActivity.class;
+                Class <TodayInfoActivity> temp = TodayInfoActivity.class;
                 myfunc(temp);
             }
         });
@@ -70,7 +65,7 @@ public class addMedicineActivity extends AppCompatActivity {
         c2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Class<checkProgressActivity> temp = checkProgressActivity.class;
+                Class<checkScheduleActivity> temp = checkScheduleActivity.class;
                 myfunc(temp);
             }
         });

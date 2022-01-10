@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">project</string>
     <string name="addmedicinebuttontext">Add Medicine</string>
-    <string name="progress">Progress</string>
-    <string name="today">Today</string>
+    <string name="progress">Daily Schedule</string>
+    <string name="today">Today Medicines</string>
     <string name="map">Map</string>
     <string name="fab_content_desc">Fab button</string>
 

@@ -120,6 +120,21 @@ public class MtDatabaseHelper extends SQLiteOpenHelper
         return cursor;
     }
 
+    public Cursor readAdaysAllData(String s){
+        String query = "SELECT * FROM "+ TABLE_NAME +" WHERE "+s+"  ='yes'";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+
+        if(db != null){
+            cursor = db.rawQuery(query, null);
+
+
+        }
+        return cursor;
+    }
+
 
 
 

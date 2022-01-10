@@ -1,0 +1,182 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:orientation="vertical"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/sixteen_dp"
+            android:paddingLeft="@dimen/sixteen_dp"
+            android:paddingRight="@dimen/sixteen_dp"
+            android:paddingTop="@dimen/sixteen_dp">
+
+            <com.example.android.project.views.RobotoBoldTextView
+                android:id="@+id/tv_med_time_full"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                tools:text="23:20" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            android:paddingBottom="@dimen/eight_dp"
+            android:paddingLeft="@dimen/sixteen_dp"
+            android:paddingRight="@dimen/sixteen_dp"
+            android:paddingTop="@dimen/eight_dp">
+
+            <ImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@null"
+                android:src="@drawable/icon_blister" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toStartOf="@+id/linearLayout"
+                android:layout_toLeftOf="@+id/linearLayout"
+                android:layout_toEndOf="@+id/iv_icon"
+                android:layout_toRightOf="@+id/iv_icon"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <com.example.android.project.views.RobotoBoldTextView
+                    android:id="@+id/tv_medicine_name_full"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FDFAFA"
+                    tools:text="Paracetamol" />
+
+                <com.example.android.project.views.RobotoBoldTextView
+                    android:id="@+id/tv_dose_details_full"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    tools:text="1.0 adhesive(s)" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/checkbox_layout_full"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            android:weightSum="7">
+
+            <com.example.android.project.views.DayViewCheckBox
+                android:id="@+id/tv_sunday_full"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_day_view"
+                android:button="@null"
+                android:gravity="center"
+                android:text="S" />
+
+            <com.example.android.project.views.DayViewCheckBox
+                android:id="@+id/tv_monday_full"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_day_view"
+                android:button="@null"
+                android:gravity="center"
+                android:text="M" />
+
+
+            <com.example.android.project.views.DayViewCheckBox
+                android:id="@+id/tv_tuesday_full"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_day_view"
+                android:button="@null"
+                android:gravity="center"
+                android:text="T" />
+
+            <com.example.android.project.views.DayViewCheckBox
+                android:id="@+id/tv_wednesday_full"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_day_view"
+                android:button="@null"
+                android:gravity="center"
+                android:text="W" />
+
+            <com.example.android.project.views.DayViewCheckBox
+                android:id="@+id/tv_thursday_full"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_day_view"
+                android:button="@null"
+                android:gravity="center"
+                android:text="T" />
+
+            <com.example.android.project.views.DayViewCheckBox
+                android:id="@+id/tv_friday_full"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_day_view"
+                android:button="@null"
+                android:gravity="center"
+                android:text="F" />
+
+
+            <com.example.android.project.views.DayViewCheckBox
+                android:id="@+id/tv_saturday_full"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_day_view"
+                android:button="@null"
+                android:gravity="center"
+                android:text="S" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>

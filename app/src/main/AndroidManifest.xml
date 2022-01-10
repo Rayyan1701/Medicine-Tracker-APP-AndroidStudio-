@@ -11,16 +11,17 @@
         android:theme="@style/Theme.Project">
         <activity android:name=".AddMedicineDetailsForm"></activity>
         <activity
-            android:name=".UserInfoActivity"
-            android:label="Today"
+            android:name=".TodayInfoActivity"
+            android:label="Today's Medicines"
+
             android:parentActivityName=".addMedicineActivity" />
         <activity
             android:name=".searchMedicalshopActivity"
             android:label="Map"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".checkProgressActivity"
-            android:label="Progress"
+            android:name=".checkScheduleActivity"
+            android:label="Check Daily Schedule"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".addMedicineActivity"

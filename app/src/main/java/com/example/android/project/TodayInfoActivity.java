@@ -10,14 +10,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.project.views.MtDatabaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class UserInfoActivity extends AppCompatActivity {
+public class TodayInfoActivity extends AppCompatActivity {
 
     View c1,c2,c3;
 
@@ -32,15 +31,7 @@ public class UserInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_info);
-
-
-
-
-
-
-
-
+        setContentView(R.layout.activity_today_info);
 
         c1=(View)findViewById(R.id.add_med_btn);
         c1.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +46,7 @@ public class UserInfoActivity extends AppCompatActivity {
         c2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Class<checkProgressActivity> temp = checkProgressActivity.class;
+                Class<checkScheduleActivity> temp = checkScheduleActivity.class;
                 myfunc(temp);
             }
         });
@@ -92,9 +83,9 @@ public class UserInfoActivity extends AppCompatActivity {
 
         recyclerView=(RecyclerView)findViewById(R.id.recyclerView_today);
 
-        customAdapter = new CustomAdapterToday(UserInfoActivity.this,Name,day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType,mydb,this);
+        customAdapter = new CustomAdapterToday(TodayInfoActivity.this,Name,day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType,mydb,this);
         recyclerView.setAdapter(customAdapter);
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(UserInfoActivity.this, LinearLayoutManager.VERTICAL, false);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(TodayInfoActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
 
