@@ -37,6 +37,8 @@ public class CustomAdapterToday extends RecyclerView.Adapter<CustomAdapterToday.
     public static MtDatabaseHelper mydb;
     private static Activity activityy;
 
+    mystorageclass obj;
+
     CustomAdapterToday(Context context,
                   ArrayList Name,
                   ArrayList day_sun,
@@ -50,7 +52,8 @@ public class CustomAdapterToday extends RecyclerView.Adapter<CustomAdapterToday.
                   ArrayList quantity,
                   ArrayList medicationType,
                   MtDatabaseHelper myDb,
-                  Activity i
+                  Activity i,
+                       mystorageclass obj1
     )
     {
         this.context=context;
@@ -67,6 +70,7 @@ public class CustomAdapterToday extends RecyclerView.Adapter<CustomAdapterToday.
         this.medicationType=medicationType;
         this.mydb=myDb;
         this.activityy=i;
+        this.obj=obj1;
 
 
     }
@@ -231,7 +235,25 @@ public class CustomAdapterToday extends RecyclerView.Adapter<CustomAdapterToday.
 
                     Toast.makeText(context,"Medicine Skipped",Toast.LENGTH_LONG).show();
 
-                    notifyDataSetChanged();
+
+
+                    obj.Name1=Name;
+                    obj.day_sun1=day_sun;
+                    obj.day_mon1=day_mon;
+                    obj.day_tue1=day_tue;
+                    obj.day_wed1=day_wed;
+                    obj.day_thu1=day_thu;
+                    obj.day_fri1=day_fri;
+                    obj.day_sat1=day_sat;
+                    obj.time1= CustomAdapterToday.time;
+                    obj.quantity1=quantity;
+                    obj.medicationType1=medicationType;
+
+                    obj.save();
+
+
+                    activityy.recreate();
+
 
                 }
             });
@@ -256,8 +278,22 @@ public class CustomAdapterToday extends RecyclerView.Adapter<CustomAdapterToday.
                     quantity.remove(getLayoutPosition());
                     medicationType.remove(getLayoutPosition());
 
+                    obj.Name1=Name;
+                    obj.day_sun1=day_sun;
+                    obj.day_mon1=day_mon;
+                    obj.day_tue1=day_tue;
+                    obj.day_wed1=day_wed;
+                    obj.day_thu1=day_thu;
+                    obj.day_fri1=day_fri;
+                    obj.day_sat1=day_sat;
+                    obj.time1= CustomAdapterToday.time;
+                    obj.quantity1=quantity;
+                    obj.medicationType1=medicationType;
+                    obj.save();
+
                     Toast.makeText(context,"Medicine Taken",Toast.LENGTH_LONG).show();
-                    notifyDataSetChanged();
+                    activityy.recreate();
+                    //notifyDataSetChanged();
                 }
             });
         }

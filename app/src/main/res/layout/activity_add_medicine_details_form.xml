@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#EFC0C0"
     tools:context=".addMedicineActivity">
 
     <LinearLayout
@@ -61,8 +61,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-
 
 
                 <androidx.appcompat.widget.AppCompatCheckBox
@@ -233,7 +231,7 @@
         android:id="@+id/formsubmitbutton"
         android:layout_width="176dp"
         android:layout_height="82dp"
-        android:text="Button"
+        android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

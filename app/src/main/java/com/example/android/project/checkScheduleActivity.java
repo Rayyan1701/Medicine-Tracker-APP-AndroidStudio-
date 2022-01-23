@@ -78,6 +78,17 @@ public class checkScheduleActivity extends AppCompatActivity {
             }
         });
 
+        storeTodaysDataInArrays(getCurrentDate());
+
+        recyclerView=(RecyclerView)findViewById(R.id.recyclerView_full);
+
+        customAdapter = new CustomAdapterFull(checkScheduleActivity.this,Name,day_sun,day_mon,day_tue,day_wed,day_thu,day_fri,day_sat,time,quantity, medicationType,mydb);
+        recyclerView.setAdapter(customAdapter);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(checkScheduleActivity.this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+
+
 
 
 

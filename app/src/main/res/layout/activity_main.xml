@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_blue"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <TextView
@@ -19,21 +19,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
+        app:layout_constraintVertical_bias="0.552" />
 
     <TextView
         android:id="@+id/checkprogressviewid"
         android:layout_width="209dp"
         android:layout_height="76dp"
-        android:gravity="center"
-        android:textColor="@color/black"
         android:background="@drawable/my_border"
+        android:gravity="center"
         android:text="Check Progress"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.749" />
 
     <TextView
         android:id="@+id/searchmedicalshopviewid"
@@ -41,12 +41,23 @@
         android:layout_height="76dp"
         android:background="@drawable/my_border"
         android:gravity="center"
-        android:textColor="@color/black"
         android:text="Search Nearest Medical shop"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.722" />
+        app:layout_constraintVertical_bias="0.931" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="359dp"
+        android:layout_height="289dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065"
+        app:srcCompat="@mipmap/homepageimg_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,7 @@ import android.location.Location;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -64,6 +65,9 @@ public class searchMedicalshopActivity extends AppCompatActivity implements
     private Marker curruserloc;
     private static  final int Request_User_Location_Code=0;
 
+    double latitude,longitude;
+    private int proximityradius=10000;
+
 
     SearchView searchView;
 
@@ -110,24 +114,36 @@ public class searchMedicalshopActivity extends AppCompatActivity implements
                     // on below line we are getting the location
                     // from our list a first position.
                     Address address;
-                    try {
+                    try
+                    {
                         address = addressList.get(0);
                         LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
 
-                        // on below line we are adding marker to that position.
-                        mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                        try
+                        {
+                            mMap.clear();
+                        }
+                        catch (NullPointerException e)
+                        {
+                            e.printStackTrace();
+                        }
 
-                        // below line is to animate camera to that position.
+
+                        mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-                    } catch (Exception e) {
+                        Toast.makeText(searchMedicalshopActivity.this, String.format("1111Showing currloc....%s %s", mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude()),Toast.LENGTH_LONG).show();
+
+
+                    }
+                    catch (Exception e)
+                    {
                         Toast.makeText(searchMedicalshopActivity.this, "no location as such!", Toast.LENGTH_LONG).show();
                     }
 
 
-                    // on below line we are creating a variable for our location
-                    // where we will add our locations latitude and longitude.
-
                 }
+
                 return false;
             }
 
@@ -171,7 +187,86 @@ public class searchMedicalshopActivity extends AppCompatActivity implements
         v.performClick();
 
 
+
+
+        try {
+            mMap.clear();
+        }
+        catch (NullPointerException e)
+        {
+            e.printStackTrace();
+        }
+
+        String hospital="hospital";
+
+
+       // latitude=-34;
+       // longitude=151;
+
+
+/*
+
+        String url=getUrl(latitude,longitude,hospital);
+        Object transferData[]= new Object[2];
+        GetNearbyPlaces getNearbyPlaces = new GetNearbyPlaces();
+        transferData[0]=mMap;
+        transferData[1]=url;
+
+        getNearbyPlaces.execute(transferData);
+        Toast.makeText(this,"Searching for nearby medical shops....",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Showing ..."+latitude+" "+longitude,Toast.LENGTH_LONG).show();
+*/
+        //Toast.makeText(this,"Showing currloc...."+lastlocation.getLatitude()+" "+lastlocation.getLongitude(),Toast.LENGTH_LONG).show();
+
+        //Log.d("currlocfrom","lat= "+latitude+" lon= "+longitude);
+
+
+
+    /*    LatLng latlng = new LatLng(location.getLatitude(),location.getLongitude());
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latlng);
+        markerOptions.title("User Current Location");
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+
+        //curruserloc=mMap.addMarker(markerOptions);
+        mMap.addMarker(markerOptions);
+
+        Toast.makeText(this,curruserloc.toString(),Toast.LENGTH_LONG).show();
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(12));
+
+
+*/
+
+
+
+
+
+
+
+
+
         mapFragment.getMapAsync(this);
+    }
+
+    private String getUrl(double latitude,double longitude,String nearbyplace)
+    {
+        StringBuilder googleURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+
+        googleURL.append("location"+latitude+","+longitude);
+        googleURL.append("&radius="+proximityradius);
+        googleURL.append("&type="+nearbyplace);
+        googleURL.append("&sensor=true");
+        googleURL.append("&key="+"AIzaSyDcXvv3rdq7WfXPxcyN8h83JW4ZBnKmHCY");
+
+        Log.d("Googlemapsactivity","url = "+googleURL.toString());
+
+        return googleURL.toString();
+
+
+
 
     }
 
@@ -195,6 +290,8 @@ public class searchMedicalshopActivity extends AppCompatActivity implements
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+
+
         //Add a marker in Sydney and move the camera
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             // TODO: Consider calling
@@ -203,6 +300,33 @@ public class searchMedicalshopActivity extends AppCompatActivity implements
             buildgoogleApiClient();
 
             mMap.setMyLocationEnabled(true);
+
+            Location c=mMap.getMyLocation();
+            latitude=-34;
+            longitude=151;
+            //lastlocation=c;
+
+            //Toast.makeText(this,"1111Showing currloc...."+lastlocation.getLatitude()+" "+lastlocation.getLongitude(),Toast.LENGTH_LONG).show();
+
+            String hospital="hospital";
+            String url=getUrl(latitude,longitude,hospital);
+            Object transferData[]= new Object[2];
+            GetNearbyPlaces getNearbyPlaces = new GetNearbyPlaces();
+            transferData[0]=mMap;
+            transferData[1]=url;
+
+
+            getNearbyPlaces.execute(transferData);
+            Toast.makeText(this,"Searching for nearby medical shops....",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Showing ..."+latitude+" "+longitude,Toast.LENGTH_LONG).show();
+
+
+
+        }
+        else
+        {
+            Toast.makeText(this,"No permissions",Toast.LENGTH_LONG).show();
+            Log.d("userlocationPermission"," No permisiions");
         }
 
     }
@@ -261,7 +385,15 @@ public class searchMedicalshopActivity extends AppCompatActivity implements
     @Override
     public void onLocationChanged(@NonNull Location location) {
 
+        latitude=location.getLatitude();
+        longitude=location.getLongitude();
+
+        Log.d("currloc","lat= "+latitude+" lon= "+longitude);
+
         lastlocation= location;
+
+        Toast.makeText(this,"Showing currloc111...."+lastlocation.getLatitude()+" "+lastlocation.getLongitude(),Toast.LENGTH_LONG).show();
+
         if(curruserloc != null)
         {
             curruserloc.remove();
@@ -273,15 +405,25 @@ public class searchMedicalshopActivity extends AppCompatActivity implements
         markerOptions.title("User Current Location");
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 
-        curruserloc=mMap.addMarker(markerOptions);
+        //curruserloc=mMap.addMarker(markerOptions);
+        mMap.addMarker(markerOptions);
+
+        Toast.makeText(this,curruserloc.toString(),Toast.LENGTH_LONG).show();
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latlng));
         mMap.animateCamera(CameraUpdateFactory.zoomBy(12));
+
+
 
         if(googleApiClient != null)
         {
             LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient,this);
         }
+
+
+
+
+
     }
 
     @Override

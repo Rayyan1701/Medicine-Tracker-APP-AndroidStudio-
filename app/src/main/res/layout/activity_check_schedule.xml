@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#53686A"
     tools:context=".checkScheduleActivity">
 
 
@@ -12,7 +13,10 @@
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#0A6E3F"
+        android:background="#272625"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,9 +28,22 @@
         android:layout_width="376dp"
         android:layout_height="117dp"
         android:layout_centerHorizontal="true"
+        android:calendarTextColor="@color/black"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
 
+        android:dateTextAppearance="@style/CalenderViewDateCustomText"
+        android:dayOfWeekTextAppearance="@color/black"
+        android:fadingEdge="horizontal|vertical"
+
+        android:headerBackground="@color/background_blue"
+        android:headerDayOfMonthTextAppearance="@color/black"
+        android:headerMonthTextAppearance="@color/black"
+        android:headerYearTextAppearance="@color/black"
+        android:theme="@style/CalenderViewCustom"
+
+        android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
+        android:yearListItemTextAppearance="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
@@ -39,6 +56,8 @@
         android:layout_width="235dp"
         android:layout_height="42dp"
         android:text="ok"
+        android:textColor="@color/white"
+        app:backgroundTint="#505352"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,12 +88,12 @@
         android:id="@+id/textView_notif"
         android:layout_width="175dp"
         android:layout_height="62dp"
-        android:text="Nothing Scheduled!"
-        android:visibility="gone"
-
-
         android:background="@color/black"
         android:gravity="center"
+
+
+        android:text="Nothing Scheduled!"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.589"

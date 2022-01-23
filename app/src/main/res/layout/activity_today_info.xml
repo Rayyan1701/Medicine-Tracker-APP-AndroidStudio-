@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C6EBEF"
 
     tools:context=".TodayInfoActivity">
 
@@ -13,7 +14,10 @@
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="#0A6E3F"
+        android:background="#272625"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,30 +26,36 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="176dp"
-        android:layout_height="53dp"
+        android:layout_width="190dp"
+        android:layout_height="79dp"
+        android:background="@drawable/my_border"
+        android:gravity="center"
         android:text="Nothing for Today"
 
         android:textColor="@color/black"
-        android:background="@drawable/my_border"
-        android:visibility="gone"
+        android:textSize="20dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.342" />
+        app:layout_constraintVertical_bias="0.354" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_today"
         android:layout_width="409dp"
         android:layout_height="729dp"
         android:paddingTop="?attr/actionBarSize"
+        android:paddingBottom="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingBottom="90dp"/>
+        app:layout_constraintVertical_bias="1.0" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

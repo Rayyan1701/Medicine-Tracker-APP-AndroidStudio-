@@ -212,16 +212,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                     //Toast.makeText( view.getContext(), "position = " + getLayoutPosition() +"removed", Toast.LENGTH_SHORT).show();
 
 
-
-
-
-
-
-
-
-
-
-
                     //name.setVisibility(View.INVISIBLE);
                 }
             });
